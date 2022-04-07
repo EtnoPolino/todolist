@@ -14,13 +14,24 @@ function submitInput(event){
     paragraph.innerHTML = input.value;
     
     input.value='';
-}
 
-function endTask(e){
-        
+ // we will click one time on a paragaph so that he's considered done..
+    paragraph.addEventListener('click', () => {
+        if(!paragraph.style.textDecoration){
+            paragraph.style.textDecoration = "line-through";
+        } else{
+            paragraph.style.textDecoration = null;
+        }     
+    })
+
+ // we will double click on a paragraph to cancel it
+    paragraph.addEventListener('dblclick', () => {
+        paragraph.remove();
+        sautLigne.remove();
+    })
+ 
 }
 
 
 submit.addEventListener('click', submitInput);
 
-listContainer.addEventListener('click', endTask)
